@@ -9,7 +9,18 @@ class AdminController extends Controller
 {
     public function index()
     {
-        echo 'Selamat Datang';
-        echo "<h1>" . Auth::user()->name . "</h1>";
+        return view('admin');
+    }
+    public function operator()
+    {
+        return view('admin');
+    }
+    public function keuangan()
+    {
+        return view('admin');
+    }
+    public function marketing()
+    {
+        return view('admin');
     }
 }

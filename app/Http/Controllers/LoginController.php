@@ -27,9 +27,21 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($infologin)) {
-            return redirect('admin');
-        }else{
+            if (Auth::user()->role == 'operator') {
+                return redirect('/admin/operator');
+            } else if (Auth::user()->role == 'keuangan') {
+                return redirect('/admin/keuangan');
+            } else if (Auth::user()->role == 'marketing') {
+                return redirect('/admin/marketing');
+            }
+        } else {
             return redirect('')->withErrors('Username Dan Password Salah')->withInput();
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('');
     }
 }
